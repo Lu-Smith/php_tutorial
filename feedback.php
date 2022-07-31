@@ -1,26 +1,10 @@
 <?php include "inc/header.php"; ?>
 
 <?php 
-$feedback = [
-  [
-    "id" => "1",
-    "name" => "Beth Williams",
-    "email" => "beth@gmail.com",
-    "body" => "Coding is for LIFE"
-  ],
-  [
-    "id" => "2",
-    "name" => "Lucy Luck",
-    "email" => "lucy@gmail.com",
-    "body" => "Coding can change your life"
-  ],
-  [
-    "id" => "3",
-    "name" => "Ross Johnsom",
-    "email" => "ross@gmail.com",
-    "body" => "Coding is for me"
-  ]
-  ];
+
+  $sql = "SELECT * FROM feedback";
+  $result = mysqli_query($conn, $sql);
+  $feedback = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
   ?>
    
@@ -34,6 +18,9 @@ $feedback = [
     <div class="card my-3 w-75">
      <div class="card-body text-center">
       <?php echo $item["body"]; ?>
+     <div class="text-secondary mt-2">
+      By <?php echo $item["name"]; ?>
+     </div>
      </div>
    </div>
 
